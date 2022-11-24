@@ -10,18 +10,19 @@
  if(!defined('ABSPATH')) exit;
 
 /** Categorias Personalizadas */
-function jenner_categoria_ersonalizada($categories, $post) {
+function jenner_categoria_personalizada($categories, $post) {
     return array_merge(
         $categories,
         array(
-            'slug' => 'jenner',
-            'title' => 'Jenner Blocks',
-            'icon' => 'editor-code'
+            array(
+                'slug' => 'jenner', 
+                'title' => 'Custom Blocks',
+                'icon' => 'store'
+            )
         )
     );
 }
-
-add_filter('block_categories', 'jenner_categoria_ersonalizada', 10, 2);
+add_filter('block_categories', 'jenner_categoria_personalizada', 10, 2);
 
 /** Registrar Bloques, scripts u CSS */
 function jenner_registrar_bloques(){
@@ -67,5 +68,5 @@ function jenner_registrar_bloques(){
             'style' => 'jenner-frontend-styles'
         ) );
     }
- }
- add_action( 'init', 'jenner_registrar_bloques' );
+}
+add_action( 'init', 'jenner_registrar_bloques' );

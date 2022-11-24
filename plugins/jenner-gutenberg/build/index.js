@@ -49,23 +49,41 @@ var SvgJennerIcon = function SvgJennerIcon(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _jenner_icon_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jenner-icon.svg */ "./src/jenner-icon.svg");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _jenner_icon_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jenner-icon.svg */ "./src/jenner-icon.svg");
 
-const {
-  registerBlockType
-} = wp.blocks;
+
+
 
 //Logo para el bloque
 
 
-registerBlockType('jenner/boxes', {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('jenner/boxes', {
   title: 'Cajas Jenner',
   icon: {
-    src: _jenner_icon_svg__WEBPACK_IMPORTED_MODULE_1__.ReactComponent
+    src: _jenner_icon_svg__WEBPACK_IMPORTED_MODULE_3__.ReactComponent
   },
   category: 'jenner',
+  attributes: {
+    headingBox: {
+      type: 'string',
+      source: 'html',
+      select: '.box h2'
+    }
+  },
   edit: () => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, "Se ve en el editor");
+    const onChangeHeadingBox = nuevoHeading => {
+      console.log(nuevoHeading);
+    };
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "box"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+      placeholder: "Agrega el Encabezado",
+      onchange: onChangeHeadingBox
+    })));
   },
   save: () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, "Se ve en el frontend");
@@ -92,6 +110,28 @@ registerBlockType('jenner/boxes', {
 
 "use strict";
 module.exports = window["React"];
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["blockEditor"];
+
+/***/ }),
+
+/***/ "@wordpress/blocks":
+/*!********************************!*\
+  !*** external ["wp","blocks"] ***!
+  \********************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
