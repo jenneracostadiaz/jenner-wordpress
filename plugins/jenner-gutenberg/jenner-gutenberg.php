@@ -18,7 +18,7 @@
 
     //Registrar los bloques en el editor
     wp_register_script(
-        'jenner-esitor-script', //nombre unico
+        'jenner-editor-script', //nombre unico
         plugins_url('build/index.js', __FILE__), //archivo con los bloques
         array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'), //dependencias
         filemtime( plugin_dir_path(__FILE__) . 'build/index.js') //versión
@@ -39,5 +39,19 @@
         array(),
         filemtime( plugin_dir_path(__FILE__) . 'build/styles.css')
     );
+
+    //Arreglo de bloques
+    $blocks = [
+        'jenner/boxes',
+        'jenner/cover',
+    ];
+
+    foreach ($blocks as $block) {
+        register_block_type( $block, array(
+            'editor_script' => 'jenner-editor-script',
+            'editor_styles' => 'jenner-editor-styles',
+            'style' => 'jenner-frontend-styles'
+        ) );
+    }
  }
  add_action( 'init', 'jenner_registrar_bloques' );
