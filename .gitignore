@@ -1,3 +1,4 @@
 /languages
 /upgrade
 /uploads
+**/node_modules
