@@ -8,9 +8,23 @@
  */
 
  if(!defined('ABSPATH')) exit;
- /** Registrar Bloques, scripts u CSS */
 
- function jenner_registrar_bloques(){
+/** Categorias Personalizadas */
+function jenner_categoria_ersonalizada($categories, $post) {
+    return array_merge(
+        $categories,
+        array(
+            'slug' => 'jenner',
+            'title' => 'Jenner Blocks',
+            'icon' => 'editor-code'
+        )
+    );
+}
+
+add_filter('block_categories', 'jenner_categoria_ersonalizada', 10, 2);
+
+/** Registrar Bloques, scripts u CSS */
+function jenner_registrar_bloques(){
     //Si Gutenberg no existe, salir
     if(!function_exists('register_block_type')){
         return;
@@ -27,8 +41,8 @@
     //Estilos para el editor (unicamente)
     wp_register_style(
         'jenner-editor-styles',
-        plugins_url('build/editors.css', __FILE__),
-        array('wp-edit-blocks'),
+        plugins_url( 'build/editor.css', __FILE__), // archivo css para el editor
+        array('wp-edit-blocks'), // dependencias
         filemtime( plugin_dir_path(__FILE__) . 'build/editor.css')
     );
     

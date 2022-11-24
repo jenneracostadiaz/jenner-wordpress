@@ -1,7 +1,8 @@
 <?php get_header(); ?>
 
 <main class="home-page container">
-    <section class="cover">
+    <?php the_content(); ?>
+    <!-- <section class="cover">
         <div class="cover__image">
             <picture>
                 <source srcset='<?php bloginfo('url') ?>/wp-content/uploads/2022/11/dog-cover-768x816.png' media='(min-width: 480px)'>
@@ -31,7 +32,7 @@
                 </blockquote>
             </div>
         </div>
-    </section>
+    </section> -->
 </main>
 
 <?php get_footer(); ?>
