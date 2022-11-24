@@ -1,0 +1,65 @@
+@mixin darkmode {
+	@media (prefers-color-scheme: dark) {
+		html[data-theme='dark'] & {
+			@content;
+		}
+	}
+}
+
+@mixin swith-darkmode($color, $active: false) {
+	position: relative;
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		max-width: 0;
+		height: 0.25rem;
+		background-color: $color;
+		transition: all 0.5s;
+	}
+	@if $active {
+		&::after {
+			max-width: 2rem;
+		}
+	}
+}
+
+.btn-theme-mode {
+	display: flex;
+	align-items: center;
+	&__svg {
+		margin-right: 1rem;
+		fill: $cBackgroun03;
+		@include darkmode() {
+			fill: $cWhite;
+		}
+	}
+	&__txt-switch {
+		font-weight: 700;
+	}
+	@include darkmode() {
+		color: $cWhite;
+	}
+}
+
+.txt-switch {
+	margin: 0;
+	&__light {
+		color: $cBackgroun03;
+		@include swith-darkmode($cBackgroun03, $active: true);
+		@include darkmode() {
+			color: $cGray50;
+			@include swith-darkmode($cBackgroun03, $active: false);
+		}
+	}
+	&__dark {
+		color: $cBackgroun02;
+		@include swith-darkmode($cWhite, $active: false);
+		@include darkmode() {
+			color: $cWhite;
+			@include swith-darkmode($cWhite, $active: true);
+		}
+	}
+}

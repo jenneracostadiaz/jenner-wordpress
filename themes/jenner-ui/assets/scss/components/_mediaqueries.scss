@@ -1,0 +1,35 @@
+@mixin minscreen {
+	@media only screen and (min-width: $d-minscreen) {
+		@content;
+	}
+}
+
+@mixin phone {
+	@media only screen and (min-width: $d-phone) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media only screen and (min-width: $d-tablet) {
+		@content;
+	}
+}
+
+@mixin laptop {
+	@media only screen and (min-width: $d-laptop) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media only screen and (min-width: $d-desktop) {
+		@content;
+	}
+}
+
+@mixin fullDesktop {
+	@media only screen and (min-width: $d-fullDesktop) {
+		@content;
+	}
+}

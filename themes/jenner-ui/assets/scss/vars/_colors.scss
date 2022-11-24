@@ -1,0 +1,36 @@
+$cPrimary: #009cd6;
+$cPrimary_hover: #047fac;
+$cPrimary_focus: #016488;
+$cSecondary: #003249;
+$cThird: #004b6c;
+
+$cBackgroun01: #1a2226;
+$cBackgroun02: #474e51;
+$cBackgroun03: #121416;
+
+$cGray60: #757a7c;
+$cGray50: #a3a6a8;
+$cGray40: #d1d2d3;
+$cGray30: #e8e8e9;
+
+$cWhite: #f5f5f6;
+
+/*** Color States ***/
+$cActive: #e8e8e9;
+$cDeactive: #30383b;
+$cLightMode: #003249;
+$cDarkMode: #001524;
+
+/*** ColorFul ***/
+$cCF01: #2e8cff;
+$cCF02: #ff2e8c;
+$cCF03: #2effa1;
+$cCF04: #a12eff;
+$cCF05: #ffd52e;
+$cCF06: #ff9fa8;
+$cCF07: #ff9f7b;
+
+/*** Gradiets ***/
+$gR01: radial-gradient($cCF06, $cCF04, $cCF01, $cCF03);
+$gL02: linear-gradient(90deg, $cCF02, $cCF04);
+$gL03: linear-gradient($cSecondary, $cThird);

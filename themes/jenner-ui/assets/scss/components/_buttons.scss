@@ -1,0 +1,67 @@
+@mixin btn-base {
+	width: fit-content;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: $ePopup;
+	padding: 1.2rem 3.2rem;
+	border-radius: 2.4rem;
+	margin: auto;
+}
+
+@mixin btn-primary($bg, $color) {
+	@include btn-base();
+	background-color: $bg;
+	color: $color;
+	svg {
+		fill: $color;
+		margin-right: 1rem;
+	}
+	&:hover {
+		@if ($bg == $cPrimary) {
+			background-color: $cPrimary_hover;
+			color: $cWhite;
+		}
+	}
+	&:focus {
+		@if ($bg == $cPrimary) {
+			background-color: $cPrimary_focus;
+			color: $color;
+			outline: 0.35rem solid rgba($cPrimary, 0.25);
+		}
+	}
+}
+
+@mixin btn-secondary($border, $color) {
+	@include btn-base();
+	background-color: transparent;
+	border: 0.2rem solid $border;
+	color: $color;
+	svg {
+		fill: $color;
+		margin-right: 1rem;
+	}
+	&:hover {
+		@if ($border == $cPrimary) {
+			background-color: rgba($cPrimary, 0.05);
+			color: $color;
+		}
+	}
+	&:focus {
+		@if ($border == $cPrimary) {
+			background-color: rgba($cPrimary, 0.005);
+			outline: 0.35rem solid rgba($cPrimary, 0.25);
+		}
+	}
+}
+
+.btn-primary {
+	@include btn-primary($cPrimary, $cWhite);
+}
+
+.btn-secondary {
+	@include btn-secondary($cPrimary, $cBackgroun03);
+	@include darkmode() {
+		@include btn-secondary($cPrimary, $cWhite);
+	}
+}

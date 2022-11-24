@@ -1,0 +1,15 @@
+@import '../vars/displays';
+
+@mixin container($max-width) {
+	max-width: $max-width;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.container {
+	@include container($d-desktop);
+}
+
+.min-container {
+	@include container($d-tablet);
+}

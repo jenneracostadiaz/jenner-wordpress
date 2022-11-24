@@ -1,0 +1,130 @@
+$ffTitle: 'Chillax', sans-serif;
+$ffBody: 'Satoshi', sans-serif;
+
+/*** Titles ***/
+@mixin title-L-SB18 {
+	font-family: $ffTitle;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 24px;
+}
+
+/*** HeadLines ***/
+@mixin H0-SemiBold60 {
+	font-family: $ffTitle;
+	font-weight: 600;
+	font-size: 60px;
+	line-height: 60px;
+	margin: 0.77em 0;
+}
+@mixin H1-SemiBold48 {
+	font-family: $ffTitle;
+	font-weight: 600;
+	font-size: 45px;
+	line-height: 56px;
+	margin: 0.67em 0;
+}
+@mixin H2-SemiBold40 {
+	font-family: $ffTitle;
+	font-weight: 600;
+	font-size: 40px;
+	line-height: 48px;
+	margin: 0.57em 0;
+}
+@mixin H3-SemiBold36 {
+	font-family: $ffTitle;
+	font-weight: 600;
+	font-size: 36px;
+	line-height: 40px;
+	margin: 0.47em 0;
+}
+@mixin H4-SemiBold32 {
+	font-family: $ffTitle;
+	font-weight: 600;
+	font-size: 32px;
+	line-height: 40px;
+	margin: 0.37em 0;
+}
+@mixin H5-SemiBold24 {
+	font-family: $ffTitle;
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 32px;
+	margin: 0.27em 0;
+}
+@mixin H6-SemiBold20 {
+	font-family: $ffTitle;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 24px;
+	margin: 0.17em 0;
+}
+
+/*** Body ***/
+@mixin Body-Regular17 {
+	font-family: $ffBody;
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 24px;
+}
+@mixin Body-Medium14 {
+	font-family: $ffBody;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 24px;
+}
+@mixin Body-Bold13 {
+	font-family: $ffBody;
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 24px;
+}
+@mixin Body-Medium13 {
+	font-family: $ffBody;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 24px;
+}
+@mixin Body-Regular13 {
+	font-family: $ffBody;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 24px;
+}
+@mixin Caption-Medium12 {
+	font-family: $ffBody;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 16px;
+}
+@mixin Caption-Medium11 {
+	font-family: $ffBody;
+	font-weight: 500;
+	font-size: 11px;
+	line-height: 16px;
+}
+@mixin CHIP-Bold10 {
+	font-family: $ffBody;
+	font-weight: 700;
+	font-size: 10px;
+	line-height: 16px;
+	text-transform: uppercase;
+}
+@mixin Tab-SemiBold14 {
+	font-family: $ffBody;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 24px;
+}
+@mixin Title-SemiBold16 {
+	font-family: $ffBody;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 24px;
+}
+@mixin Title-SemiBold14 {
+	font-family: $ffBody;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 24px;
+}

@@ -1,0 +1,25 @@
+.jenners-philosophy {
+	margin: unset;
+	width: 100%;
+	max-width: 35rem;
+	display: grid;
+	grid-gap: 1rem;
+	align-items: center;
+	text-align: left;
+	grid-template-columns: 6rem 1fr;
+	grid-template-rows: repeat(2, 1fr);
+	&__img {
+		border-radius: 100%;
+		width: 6rem;
+		height: 6rem;
+	}
+	&__cite {
+		margin: 0;
+		@include Caption-Medium12;
+	}
+	&__btn {
+		grid-column: 2 / 3;
+		grid-row: 2/ 3;
+		margin-left: 0;
+	}
+}
