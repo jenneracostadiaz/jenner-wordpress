@@ -1,5 +1,35 @@
 @import '../vars/colors';
 
+@mixin bg-gradiente-cover($position_one, $position_two) {
+	z-index: -1;
+	content: '';
+	position: absolute;
+	@if $position_one == 'top' {
+		top: -20rem;
+	}
+	@if $position_one == 'bottom' {
+		bottom: -20rem;
+	}
+	@if $position_two == 'left' {
+		left: -10rem;
+	}
+	@if $position_two == 'right' {
+		right: -10rem;
+	}
+	display: block;
+	width: 48rem;
+	height: 48rem;
+	background: $gR01;
+	border-radius: 100%;
+	mix-blend-mode: hard-light;
+	opacity: 0.5;
+	filter: blur(150px);
+	@include darkmode() {
+		mix-blend-mode: overlay;
+		opacity: 0.85;
+	}
+}
+
 .home-page {
 	padding: 4rem 0;
 }
@@ -25,23 +55,7 @@
 			grid-row: 1 / 2;
 		}
 		&::after {
-			z-index: -1;
-			content: '';
-			position: absolute;
-			right: -10rem;
-			bottom: -20rem;
-			display: block;
-			width: 48rem;
-			height: 48rem;
-			background: $gR01;
-			border-radius: 100%;
-			mix-blend-mode: hard-light;
-			opacity: 0.5;
-			filter: blur(150px);
-			@include darkmode() {
-				mix-blend-mode: overlay;
-				opacity: 0.85;
-			}
+			@include bg-gradiente-cover(bottom, right);
 		}
 		img,
 		button {
@@ -59,6 +73,9 @@
 			grid-column: 1 / 2;
 			grid-row: 1 / 2;
 			text-align: left;
+		}
+		&::after {
+			@include bg-gradiente-cover(top, left);
 		}
 		&__title {
 			@include H4-SemiBold32;
