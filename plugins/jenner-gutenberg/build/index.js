@@ -250,6 +250,11 @@ __webpack_require__.r(__webpack_exports__);
       source: 'html',
       selector: '.cover .cover__txt .cover__txt__calltoactions .btn-secondary'
     },
+    bioBtn: {
+      type: 'string',
+      source: 'html',
+      selector: '.cover .cover__txt .cover__txt__blockquote .jenners-philosophy .jenners-philosophy__btn'
+    },
     coverPhoto: {
       type: 'string',
       selector: '.cover .cover__image picture'
@@ -292,7 +297,8 @@ __webpack_require__.r(__webpack_exports__);
         jennerPhotoID,
         jennerPhotoAlt,
         btnPrimary,
-        btnSecondary
+        btnSecondary,
+        bioBtn
       },
       setAttributes
     } = props;
@@ -329,6 +335,11 @@ __webpack_require__.r(__webpack_exports__);
     const onChangeBtnSecondary = newLink => {
       setAttributes({
         btnSecondary: newLink
+      });
+    };
+    const onChangeBioButton = newLink => {
+      setAttributes({
+        bioBtn: newLink
       });
     };
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
@@ -398,7 +409,12 @@ __webpack_require__.r(__webpack_exports__);
       placeholder: "Agregar Cita",
       onChange: onChangesCiteBox,
       value: citeBox
-    }))))));
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+      placeholder: "Bot\xF3n Bio",
+      className: "jenners-philosophy__btn btn-primary",
+      onChange: onChangeBioButton,
+      value: bioBtn
+    })))));
   },
   save: props => {
     const {
@@ -411,7 +427,8 @@ __webpack_require__.r(__webpack_exports__);
         jennerPhoto,
         jennerPhotoAlt,
         btnPrimary,
-        btnSecondary
+        btnSecondary,
+        bioBtn
       }
     } = props;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
@@ -452,6 +469,10 @@ __webpack_require__.r(__webpack_exports__);
       className: "jenners-philosophy__cite"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
       value: citeBox
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "jenners-philosophy__btn btn-primary"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+      value: bioBtn
     }))))));
   }
 });

@@ -34,6 +34,12 @@ registerBlockType('jenner/cover', {
 			selector:
 				'.cover .cover__txt .cover__txt__calltoactions .btn-secondary',
 		},
+		bioBtn: {
+			type: 'string',
+			source: 'html',
+			selector:
+				'.cover .cover__txt .cover__txt__blockquote .jenners-philosophy .jenners-philosophy__btn',
+		},
 		coverPhoto: {
 			type: 'string',
 			selector: '.cover .cover__image picture',
@@ -80,6 +86,7 @@ registerBlockType('jenner/cover', {
 				jennerPhotoAlt,
 				btnPrimary,
 				btnSecondary,
+				bioBtn,
 			},
 			setAttributes,
 		} = props;
@@ -113,6 +120,10 @@ registerBlockType('jenner/cover', {
 		};
 		const onChangeBtnSecondary = (newLink) => {
 			setAttributes({ btnSecondary: newLink });
+		};
+
+		const onChangeBioButton = (newLink) => {
+			setAttributes({ bioBtn: newLink });
 		};
 
 		return (
@@ -194,6 +205,12 @@ registerBlockType('jenner/cover', {
 									value={citeBox}
 								/>
 							</p>
+							<RichText
+								placeholder="Botón Bio"
+								className="jenners-philosophy__btn btn-primary"
+								onChange={onChangeBioButton}
+								value={bioBtn}
+							/>
 						</blockquote>
 					</div>
 				</div>
@@ -212,6 +229,7 @@ registerBlockType('jenner/cover', {
 				jennerPhotoAlt,
 				btnPrimary,
 				btnSecondary,
+				bioBtn,
 			},
 		} = props;
 		return (
@@ -251,6 +269,9 @@ registerBlockType('jenner/cover', {
 							<p className="jenners-philosophy__cite">
 								<RichText.Content value={citeBox} />
 							</p>
+							<div className="jenners-philosophy__btn btn-primary">
+								<RichText.Content value={bioBtn} />
+							</div>
 						</blockquote>
 					</div>
 				</div>
