@@ -123,3 +123,33 @@
 		}
 	}
 }
+
+/*** Propuesta de Valor  ***/
+.value-proposal {
+	margin: 4rem auto;
+	&__list {
+		display: grid;
+		grid-gap: 4rem;
+		@include tablet() {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		&__item {
+			h3,
+			p {
+				margin: 0;
+			}
+			h3 {
+				display: flex;
+				align-items: center;
+				svg,
+				img {
+					margin-right: 0.5rem;
+					fill: $cBackgroun03;
+					@include darkmode() {
+						fill: $cWhite;
+					}
+				}
+			}
+		}
+	}
+}
