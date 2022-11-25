@@ -42,17 +42,17 @@ function jenner_registrar_bloques(){
     //Estilos para el editor (unicamente)
     wp_register_style(
         'jenner-editor-styles',
-        plugins_url( 'build/editor.css', __FILE__), // archivo css para el editor
+        plugins_url( 'styles/editor.css', __FILE__), // archivo css para el editor
         array('wp-edit-blocks'), // dependencias
-        filemtime( plugin_dir_path(__FILE__) . 'build/editor.css')
+        filemtime( plugin_dir_path(__FILE__) . 'styles/editor.css')
     );
     
     //Estilos para los bloques backend y frontend
     wp_register_style(
         'jenner-frontend-styles',
-        plugins_url('build/styles.css', __FILE__),
+        plugins_url('styles/styles.css', __FILE__),
         array(),
-        filemtime( plugin_dir_path(__FILE__) . 'build/styles.css')
+        filemtime( plugin_dir_path(__FILE__) . 'styles/styles.css')
     );
 
     //Arreglo de bloques

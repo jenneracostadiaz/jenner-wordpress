@@ -2,7 +2,6 @@ import { registerBlockType } from '@wordpress/blocks';
 import { RichText } from '@wordpress/block-editor';
 
 //Logo para el bloque
-
 import { ReactComponent as Logo } from '../jenner-icon.svg';
 
 registerBlockType('jenner/boxes', {
@@ -10,29 +9,29 @@ registerBlockType('jenner/boxes', {
 	icon: { src: Logo },
 	category: 'jenner',
 	attributes: {
-		headingBox: {
+		content: {
 			type: 'string',
 			source: 'html',
-			select: '.box h2',
+			selector: 'h2',
 		},
 	},
-	edit: () => {
-		const onChangeHeadingBox = (nuevoHeading) => {
-			console.log(nuevoHeading);
+	edit() {
+		const onChangesheadingBox = (a) => {
+			console.log(a);
 		};
 
 		return (
-			<div className="box">
+			<div>
 				<h2>
 					<RichText
-						placeholder="Agrega el Encabezado"
-						onchange={onChangeHeadingBox}
+						onChange={onChangesheadingBox} // Store updated content as a block attribute
+						placeholder="Agregar el Encabezado" // Display this text before any content has been added by the user
 					/>
 				</h2>
 			</div>
 		);
 	},
-	save: () => {
-		return <h1>Se ve en el frontend</h1>;
+	save() {
+		return <RichText.Content tagName="h2" />; // Saves <h2>Content added in the editor...</h2> to the database for frontend display
 	},
 });

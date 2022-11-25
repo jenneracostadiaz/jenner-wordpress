@@ -60,7 +60,6 @@ __webpack_require__.r(__webpack_exports__);
 
 //Logo para el bloque
 
-
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('jenner/boxes', {
   title: 'Cajas Jenner',
   icon: {
@@ -68,25 +67,27 @@ __webpack_require__.r(__webpack_exports__);
   },
   category: 'jenner',
   attributes: {
-    headingBox: {
+    content: {
       type: 'string',
       source: 'html',
-      select: '.box h2'
+      selector: 'h2'
     }
   },
-  edit: () => {
-    const onChangeHeadingBox = nuevoHeading => {
-      console.log(nuevoHeading);
+  edit() {
+    const onChangesheadingBox = a => {
+      console.log(a);
     };
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "box"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-      placeholder: "Agrega el Encabezado",
-      onchange: onChangeHeadingBox
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+      onChange: onChangesheadingBox // Store updated content as a block attribute
+      ,
+      placeholder: "Agregar el Encabezado" // Display this text before any content has been added by the user
     })));
   },
-  save: () => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, "Se ve en el frontend");
+
+  save() {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+      tagName: "h2"
+    }); // Saves <h2>Content added in the editor...</h2> to the database for frontend display
   }
 });
 

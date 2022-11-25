@@ -14,7 +14,7 @@ if ( ! function_exists( 'jennerui_setup' ) ) :
 	function jennerui_setup() {
 
         add_theme_support( 'wp-block-styles' );
-        add_editor_style( 'editor-style.css' )
+        add_editor_style( 'editor-style.css' );
 
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'dark-editor-style' );
