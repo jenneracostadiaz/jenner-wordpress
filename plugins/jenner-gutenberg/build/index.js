@@ -245,6 +245,11 @@ __webpack_require__.r(__webpack_exports__);
       source: 'html',
       selector: '.cover .cover__txt .cover__txt__calltoactions .btn-primary'
     },
+    btnSecondary: {
+      type: 'string',
+      source: 'html',
+      selector: '.cover .cover__txt .cover__txt__calltoactions .btn-secondary'
+    },
     coverPhoto: {
       type: 'string',
       selector: '.cover .cover__image picture'
@@ -286,7 +291,8 @@ __webpack_require__.r(__webpack_exports__);
         jennerPhoto,
         jennerPhotoID,
         jennerPhotoAlt,
-        btnPrimary
+        btnPrimary,
+        btnSecondary
       },
       setAttributes
     } = props;
@@ -320,6 +326,11 @@ __webpack_require__.r(__webpack_exports__);
         btnPrimary: newLink
       });
     };
+    const onChangeBtnSecondary = newLink => {
+      setAttributes({
+        btnSecondary: newLink
+      });
+    };
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
       className: "cover"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -351,10 +362,15 @@ __webpack_require__.r(__webpack_exports__);
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cover__txt__calltoactions"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-      placeholder: "Btn Primary",
+      placeholder: "Bot\xF3n Primario",
       className: "btn-primary",
       onChange: onChangeBtnPrimary,
       value: btnPrimary
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+      placeholder: "Bot\xF3n Secundario",
+      className: "btn-secondary",
+      onChange: onChangeBtnSecondary,
+      value: btnSecondary
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cover__txt__blockquote"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("blockquote", {
@@ -394,7 +410,8 @@ __webpack_require__.r(__webpack_exports__);
         coverPhotoAlt,
         jennerPhoto,
         jennerPhotoAlt,
-        btnPrimary
+        btnPrimary,
+        btnSecondary
       }
     } = props;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
@@ -419,6 +436,10 @@ __webpack_require__.r(__webpack_exports__);
       className: "btn-primary"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
       value: btnPrimary
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "btn-secondary"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+      value: btnSecondary
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cover__txt__blockquote"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("blockquote", {

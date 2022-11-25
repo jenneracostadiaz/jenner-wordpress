@@ -79,6 +79,20 @@
 			@include tablet() {
 				justify-content: start;
 			}
+			.btn-secondary {
+				.wp-image-200 {
+					display: block;
+					@include darkmode() {
+						display: none;
+					}
+				}
+				.wp-image-206 {
+					display: none;
+					@include darkmode() {
+						display: block;
+					}
+				}
+			}
 		}
 	}
 }
