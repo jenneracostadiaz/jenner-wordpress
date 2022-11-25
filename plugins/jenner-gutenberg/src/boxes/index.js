@@ -21,7 +21,6 @@ registerBlockType('jenner/boxes', {
 		},
 	},
 	edit: (props) => {
-		console.log(props);
 		//Extraer el contenido desde props
 		const {
 			attributes: { headingBox, textoBox },
@@ -56,7 +55,6 @@ registerBlockType('jenner/boxes', {
 		);
 	},
 	save: (props) => {
-		console.log(props);
 		//Extraer el contenido desde props
 		const {
 			attributes: { headingBox, textoBox },

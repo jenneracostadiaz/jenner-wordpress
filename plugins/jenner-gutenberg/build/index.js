@@ -79,7 +79,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   edit: props => {
-    console.log(props);
     //Extraer el contenido desde props
     const {
       attributes: {
@@ -111,7 +110,6 @@ __webpack_require__.r(__webpack_exports__);
     })));
   },
   save: props => {
-    console.log(props);
     //Extraer el contenido desde props
     const {
       attributes: {
