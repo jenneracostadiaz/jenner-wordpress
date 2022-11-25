@@ -79,6 +79,16 @@
 			@include tablet() {
 				justify-content: start;
 			}
+			.btn-primary,
+			.btn-secondary {
+				margin: auto;
+				@include tablet() {
+					margin: 0;
+					@include darkmode() {
+						margin: 0;
+					}
+				}
+			}
 			.btn-secondary {
 				.wp-image-200 {
 					display: block;
