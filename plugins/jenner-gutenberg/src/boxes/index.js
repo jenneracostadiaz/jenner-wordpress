@@ -9,29 +9,68 @@ registerBlockType('jenner/boxes', {
 	icon: { src: Logo },
 	category: 'jenner',
 	attributes: {
-		content: {
+		headingBox: {
 			type: 'string',
 			source: 'html',
-			selector: 'h2',
+			selector: '.box h2',
+		},
+		textoBox: {
+			type: 'string',
+			source: 'html',
+			selector: '.box p',
 		},
 	},
-	edit() {
-		const onChangesheadingBox = (a) => {
-			console.log(a);
+	edit: (props) => {
+		console.log(props);
+		//Extraer el contenido desde props
+		const {
+			attributes: { headingBox, textoBox },
+			setAttributes,
+		} = props;
+
+		const onChangesHeadingBox = (nuevoHeading) => {
+			setAttributes({ headingBox: nuevoHeading });
+		};
+
+		const onChangetextoBox = (nuevoTexto) => {
+			setAttributes({ textoBox: nuevoTexto });
 		};
 
 		return (
-			<div>
+			<div className="box">
 				<h2>
 					<RichText
-						onChange={onChangesheadingBox} // Store updated content as a block attribute
-						placeholder="Agregar el Encabezado" // Display this text before any content has been added by the user
+						placeholder="Agregar el Encabezado"
+						onChange={onChangesHeadingBox}
+						value={headingBox}
 					/>
 				</h2>
+				<p>
+					<RichText
+						placeholder="Agrega el Texto"
+						onChange={onChangetextoBox}
+						value={textoBox}
+					/>
+				</p>
 			</div>
 		);
 	},
-	save() {
-		return <RichText.Content tagName="h2" />; // Saves <h2>Content added in the editor...</h2> to the database for frontend display
+	save: (props) => {
+		console.log(props);
+		//Extraer el contenido desde props
+		const {
+			attributes: { headingBox, textoBox },
+		} = props;
+
+		return (
+			<div className="box">
+				<h2>
+					<RichText.Content value={headingBox} />
+				</h2>
+				<p>
+					<RichText.Content value={textoBox} />
+				</p>
+			</div>
+		);
 	},
 });

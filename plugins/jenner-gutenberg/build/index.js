@@ -67,27 +67,65 @@ __webpack_require__.r(__webpack_exports__);
   },
   category: 'jenner',
   attributes: {
-    content: {
+    headingBox: {
       type: 'string',
       source: 'html',
-      selector: 'h2'
+      selector: '.box h2'
+    },
+    textoBox: {
+      type: 'string',
+      source: 'html',
+      selector: '.box p'
     }
   },
-  edit() {
-    const onChangesheadingBox = a => {
-      console.log(a);
+  edit: props => {
+    console.log(props);
+    //Extraer el contenido desde props
+    const {
+      attributes: {
+        headingBox,
+        textoBox
+      },
+      setAttributes
+    } = props;
+    const onChangesHeadingBox = nuevoHeading => {
+      setAttributes({
+        headingBox: nuevoHeading
+      });
     };
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-      onChange: onChangesheadingBox // Store updated content as a block attribute
-      ,
-      placeholder: "Agregar el Encabezado" // Display this text before any content has been added by the user
+    const onChangetextoBox = nuevoTexto => {
+      setAttributes({
+        textoBox: nuevoTexto
+      });
+    };
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "box"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+      placeholder: "Agregar el Encabezado",
+      onChange: onChangesHeadingBox,
+      value: headingBox
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+      placeholder: "Agrega el Texto",
+      onChange: onChangetextoBox,
+      value: textoBox
     })));
   },
-
-  save() {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
-      tagName: "h2"
-    }); // Saves <h2>Content added in the editor...</h2> to the database for frontend display
+  save: props => {
+    console.log(props);
+    //Extraer el contenido desde props
+    const {
+      attributes: {
+        headingBox,
+        textoBox
+      }
+    } = props;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "box"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+      value: headingBox
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+      value: textoBox
+    })));
   }
 });
 

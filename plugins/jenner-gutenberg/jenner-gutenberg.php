@@ -16,8 +16,8 @@ function jenner_categoria_personalizada($categories, $post) {
         array(
             array(
                 'slug' => 'jenner', 
-                'title' => 'Custom Blocks',
-                'icon' => 'store'
+                'title' => 'Jenner Blocks',
+                'icon' => 'editor-code'
             )
         )
     );
