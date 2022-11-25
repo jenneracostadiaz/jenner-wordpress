@@ -39,33 +39,16 @@ function jenner_registrar_bloques(){
         filemtime( plugin_dir_path(__FILE__) . 'build/index.js') //versión
     );
 
-    //Estilos para el editor (unicamente)
-    wp_register_style(
-        'jenner-editor-styles',
-        plugins_url( 'styles/editor.css', __FILE__), // archivo css para el editor
-        array('wp-edit-blocks'), // dependencias
-        filemtime( plugin_dir_path(__FILE__) . 'styles/editor.css')
-    );
-    
-    //Estilos para los bloques backend y frontend
-    wp_register_style(
-        'jenner-frontend-styles',
-        plugins_url('styles/styles.css', __FILE__),
-        array(),
-        filemtime( plugin_dir_path(__FILE__) . 'styles/styles.css')
-    );
-
     //Arreglo de bloques
     $blocks = [
         'jenner/boxes',
         'jenner/cover',
+        'jenner/valueproposal',
     ];
 
     foreach ($blocks as $block) {
         register_block_type( $block, array(
             'editor_script' => 'jenner-editor-script',
-            'editor_styles' => 'jenner-editor-styles',
-            'style' => 'jenner-frontend-styles'
         ) );
     }
 }
