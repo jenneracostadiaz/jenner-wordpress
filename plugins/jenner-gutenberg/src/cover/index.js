@@ -22,6 +22,12 @@ registerBlockType('jenner/cover', {
 			selector:
 				'.cover .cover__txt .cover__txt__blockquote .jenners-philosophy__cite',
 		},
+		btnPrimary: {
+			type: 'string',
+			source: 'html',
+			selector:
+				'.cover .cover__txt .cover__txt__calltoactions .btn-primary',
+		},
 		coverPhoto: {
 			type: 'string',
 			selector: '.cover .cover__image picture',
@@ -66,6 +72,7 @@ registerBlockType('jenner/cover', {
 				jennerPhoto,
 				jennerPhotoID,
 				jennerPhotoAlt,
+				btnPrimary,
 			},
 			setAttributes,
 		} = props;
@@ -92,6 +99,10 @@ registerBlockType('jenner/cover', {
 				jennerPhotoID: newImage.id,
 				jennerPhotoAlt: newImage.alt,
 			});
+		};
+
+		const onChangeBtnPrimary = (newLink) => {
+			setAttributes({ btnPrimary: newLink });
 		};
 
 		return (
@@ -125,6 +136,14 @@ registerBlockType('jenner/cover', {
 							value={headingBox}
 						/>
 					</h1>
+					<div className="cover__txt__calltoactions">
+						<RichText
+							placeholder="Btn Primary"
+							className="btn-primary"
+							onChange={onChangeBtnPrimary}
+							value={btnPrimary}
+						/>
+					</div>
 					<div className="cover__txt__blockquote">
 						<blockquote className="jenners-philosophy">
 							<MediaUpload
@@ -175,6 +194,7 @@ registerBlockType('jenner/cover', {
 				coverPhotoAlt,
 				jennerPhoto,
 				jennerPhotoAlt,
+				btnPrimary,
 			},
 		} = props;
 		return (
@@ -194,7 +214,11 @@ registerBlockType('jenner/cover', {
 					<h1 className="cover__txt__title">
 						<RichText.Content value={headingBox} />
 					</h1>
-
+					<div className="cover__txt__calltoactions">
+						<div className="btn-primary">
+							<RichText.Content value={btnPrimary} />
+						</div>
+					</div>
 					<div className="cover__txt__blockquote">
 						<blockquote className="jenners-philosophy">
 							{jennerPhoto && (

@@ -13,7 +13,11 @@
 	@include btn-base();
 	background-color: $bg;
 	color: $color;
-	svg {
+	a {
+		color: $color;
+	}
+	svg,
+	img {
 		fill: $color;
 		margin-right: 1rem;
 	}
@@ -37,7 +41,11 @@
 	background-color: transparent;
 	border: 0.2rem solid $border;
 	color: $color;
-	svg {
+	a {
+		color: $color;
+	}
+	svg,
+	img {
 		fill: $color;
 		margin-right: 1rem;
 	}

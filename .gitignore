@@ -2,3 +2,5 @@
 /upgrade
 /uploads
 **/node_modules
+/ai1wm-backups
+**/all-in-one-wp-migration
