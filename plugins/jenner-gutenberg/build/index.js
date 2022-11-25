@@ -223,6 +223,8 @@ __webpack_require__.r(__webpack_exports__);
 
 //Logo para el bloque
 
+const d_hostname = window.location.hostname;
+const d_protocol = window.location.protocol;
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('jenner/cover', {
   title: 'Cover',
   icon: {
@@ -322,6 +324,23 @@ __webpack_require__.r(__webpack_exports__);
       onChange: onChangesHeadingBox,
       value: headingBox
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      class: "cover__txt__calltoactions"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: "#",
+      class: "btn-primary"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+      class: "svg-icon"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("use", {
+      href: d_protocol + '//' + d_hostname + '/wp-content/themes/jenner-ui/assets/icons/symbols.svg#newspaper'
+    })), "Leer nuestro Blog"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: "https://wa.me/message/FVIV67T74WYXJ1",
+      target: "_blank",
+      class: "btn-secondary"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+      class: "svg-icon"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("use", {
+      href: d_protocol + '//' + d_hostname + '/wp-content/themes/jenner-ui/assets/icons/symbols.svg#whatsapp'
+    })), "\xA1conversemos!")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cover__txt__blockquote"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
       onSelect: onSelectJennerPhoto,
@@ -374,6 +393,16 @@ __webpack_require__.r(__webpack_exports__);
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
       value: headingBox
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      class: "cover__txt__calltoactions"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: "https://wa.me/message/FVIV67T74WYXJ1",
+      target: "_blank",
+      class: "btn-secondary"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+      class: "svg-icon"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("use", {
+      href: d_protocol + '//' + d_hostname + '/wp-content/themes/jenner-ui/assets/icons/symbols.svg#whatsapp'
+    })), "\xA1conversemos!")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cover__txt__blockquote"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("blockquote", {
       className: "jenners-philosophy"

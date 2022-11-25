@@ -2,6 +2,7 @@
 
 <main class="home-page container">
     <?php the_content(); ?>
+    <?php /* ?>
     <section class="cover">
         <div class="cover__image">
             <picture>
@@ -33,6 +34,7 @@
             </div>
         </div>
     </section>
+    <?php */ ?>
 </main>
 
 <?php get_footer(); ?>

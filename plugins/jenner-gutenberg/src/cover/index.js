@@ -1,10 +1,13 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { RichText, MediaUpload } from '@wordpress/block-editor';
-import { Button } from '@wordpress/components';
-import { __, setLocaleData } from '@wordpress/i18n';
+import { Button, ExternalLink } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 //Logo para el bloque
 import { ReactComponent as Logo } from '../jenner-icon.svg';
+
+const d_hostname = window.location.hostname;
+const d_protocol = window.location.protocol;
 
 registerBlockType('jenner/cover', {
 	title: 'Cover',
@@ -109,6 +112,38 @@ registerBlockType('jenner/cover', {
 							value={headingBox}
 						/>
 					</h1>
+					<div class="cover__txt__calltoactions">
+						<a href="#" class="btn-primary">
+							<svg class="svg-icon">
+								<use
+									href={
+										d_protocol +
+										'//' +
+										d_hostname +
+										'/wp-content/themes/jenner-ui/assets/icons/symbols.svg#newspaper'
+									}
+								/>
+							</svg>
+							Leer nuestro Blog
+						</a>
+						<a
+							href="https://wa.me/message/FVIV67T74WYXJ1"
+							target="_blank"
+							class="btn-secondary"
+						>
+							<svg class="svg-icon">
+								<use
+									href={
+										d_protocol +
+										'//' +
+										d_hostname +
+										'/wp-content/themes/jenner-ui/assets/icons/symbols.svg#whatsapp'
+									}
+								/>
+							</svg>
+							¡conversemos!
+						</a>
+					</div>
 					<div className="cover__txt__blockquote">
 						<MediaUpload
 							onSelect={onSelectJennerPhoto}
@@ -169,6 +204,25 @@ registerBlockType('jenner/cover', {
 					<h1 className="cover__txt__title">
 						<RichText.Content value={headingBox} />
 					</h1>
+					<div class="cover__txt__calltoactions">
+						<a
+							href="https://wa.me/message/FVIV67T74WYXJ1"
+							target="_blank"
+							class="btn-secondary"
+						>
+							<svg class="svg-icon">
+								<use
+									href={
+										d_protocol +
+										'//' +
+										d_hostname +
+										'/wp-content/themes/jenner-ui/assets/icons/symbols.svg#whatsapp'
+									}
+								/>
+							</svg>
+							¡conversemos!
+						</a>
+					</div>
 					<div className="cover__txt__blockquote">
 						<blockquote className="jenners-philosophy">
 							{jennerPhoto && (

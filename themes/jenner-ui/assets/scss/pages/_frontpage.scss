@@ -60,14 +60,15 @@
 			text-align: left;
 		}
 		&__title {
-			margin: 0;
 			@include H4-SemiBold32;
+			margin: 0;
 			@include tablet() {
 				@include H3-SemiBold36;
 				margin: 0;
 			}
 			@include laptop() {
 				@include H0-SemiBold60;
+				margin: 0;
 			}
 		}
 		&__calltoactions {
