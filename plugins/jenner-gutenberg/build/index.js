@@ -223,8 +223,6 @@ __webpack_require__.r(__webpack_exports__);
 
 //Logo para el bloque
 
-const d_hostname = window.location.hostname;
-const d_protocol = window.location.protocol;
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('jenner/cover', {
   title: 'Cover',
   icon: {
@@ -242,11 +240,33 @@ const d_protocol = window.location.protocol;
       source: 'html',
       selector: '.cover .cover__txt .cover__txt__blockquote .jenners-philosophy__cite'
     },
-    coverIMG: {
-      type: 'array'
+    coverPhoto: {
+      type: 'string',
+      selector: '.cover .cover__image picture'
+    },
+    coverPhotoThumb: {
+      type: 'string',
+      selector: '.cover .cover__image picture'
+    },
+    coverPhotoID: {
+      type: 'string',
+      selector: '.cover .cover__image picture'
+    },
+    coverPhotoAlt: {
+      type: 'string',
+      selector: '.cover .cover__image picture'
     },
     jennerPhoto: {
-      type: 'array'
+      type: 'string',
+      selector: '.cover .cover__txt .cover__txt__blockquote .jenners-philosophy__img'
+    },
+    jennerPhotoID: {
+      type: 'string',
+      selector: '.cover .cover__txt .cover__txt__blockquote .jenners-philosophy__img'
+    },
+    jennerPhotoAlt: {
+      type: 'string',
+      selector: '.cover .cover__txt .cover__txt__blockquote .jenners-philosophy__img'
     }
   },
   edit: props => {
@@ -254,8 +274,13 @@ const d_protocol = window.location.protocol;
       attributes: {
         headingBox,
         citeBox,
-        coverIMG = [],
-        jennerPhoto = []
+        coverPhoto,
+        coverPhotoThumb,
+        coverPhotoID,
+        coverPhotoAlt,
+        jennerPhoto,
+        jennerPhotoID,
+        jennerPhotoAlt
       },
       setAttributes
     } = props;
@@ -270,26 +295,18 @@ const d_protocol = window.location.protocol;
       });
     };
     const onSelectCoverIMG = newImage => {
-      const image = {
-        thumb: newImage.sizes.medium.url,
-        large: newImage.sizes.large.url,
-        id: newImage.id,
-        alt: newImage.alt
-      };
-      console.log(image);
       setAttributes({
-        coverIMG: image
+        coverPhoto: newImage.sizes.large.url,
+        coverPhotoThumb: newImage.sizes.medium.url,
+        coverPhotoID: newImage.id,
+        coverPhotoAlt: newImage.alt
       });
     };
     const onSelectJennerPhoto = newImage => {
-      const image = {
-        thumb: newImage.sizes.medium.url,
-        id: newImage.id,
-        alt: newImage.alt
-      };
-      console.log(image);
       setAttributes({
-        jennerPhoto: image
+        jennerPhoto: newImage.sizes.thumbnail.url,
+        jennerPhotoID: newImage.id,
+        jennerPhotoAlt: newImage.alt
       });
     };
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
@@ -299,21 +316,18 @@ const d_protocol = window.location.protocol;
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
       onSelect: onSelectCoverIMG,
       allowedTypes: "image",
-      value: coverIMG.id,
+      value: coverPhotoID,
       render: _ref => {
         let {
           open
         } = _ref;
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-          className: coverIMG.id ? 'image-button' : 'button button-large',
+          className: coverPhoto ? 'image-button' : 'button button-large',
           onClick: open
-        }, !coverIMG.id ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Upload Image', 'jennerui') : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("picture", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
-          srcset: coverIMG.large,
-          media: "(min-width: 480px)"
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-          src: coverIMG.thumb,
-          alt: coverIMG.alt
-        })));
+        }, !coverPhoto ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Imagen Cover', 'jennerui') : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+          src: coverPhotoThumb,
+          alt: coverPhotoAlt
+        }));
       }
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cover__txt"
@@ -324,39 +338,24 @@ const d_protocol = window.location.protocol;
       onChange: onChangesHeadingBox,
       value: headingBox
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "cover__txt__calltoactions"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-      href: "#",
-      class: "btn-primary"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-      class: "svg-icon"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("use", {
-      href: d_protocol + '//' + d_hostname + '/wp-content/themes/jenner-ui/assets/icons/symbols.svg#newspaper'
-    })), "Leer nuestro Blog"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-      href: "https://wa.me/message/FVIV67T74WYXJ1",
-      target: "_blank",
-      class: "btn-secondary"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-      class: "svg-icon"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("use", {
-      href: d_protocol + '//' + d_hostname + '/wp-content/themes/jenner-ui/assets/icons/symbols.svg#whatsapp'
-    })), "\xA1conversemos!")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cover__txt__blockquote"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("blockquote", {
+      className: "jenners-philosophy"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
       onSelect: onSelectJennerPhoto,
       allowedTypes: "image",
-      value: jennerPhoto.id,
+      value: jennerPhotoID,
       render: _ref2 => {
         let {
           open
         } = _ref2;
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-          className: jennerPhoto.id ? 'image-button' : 'button button-large',
+          className: jennerPhoto ? 'image-button' : 'button button-large',
           onClick: open
-        }, !jennerPhoto.id ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Upload Image', 'jennerui') : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-          src: jennerPhoto.thumb,
-          alt: jennerPhoto.alt,
-          className: "jenners-philosophy__img"
+        }, !jennerPhoto ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Foto', 'jennerui') : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+          src: jennerPhoto,
+          className: "jenners-philosophy__img",
+          alt: jennerPhotoAlt
         }));
       }
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
@@ -365,27 +364,30 @@ const d_protocol = window.location.protocol;
       placeholder: "Agregar Cita",
       onChange: onChangesCiteBox,
       value: citeBox
-    })))));
+    }))))));
   },
   save: props => {
     const {
       attributes: {
         headingBox,
         citeBox,
-        coverIMG,
-        jennerPhoto
+        coverPhoto,
+        coverPhotoThumb,
+        coverPhotoAlt,
+        jennerPhoto,
+        jennerPhotoAlt
       }
     } = props;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
       className: "cover"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cover__image"
-    }, coverIMG && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("picture", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
-      srcset: coverIMG.large,
+    }, coverPhoto && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("picture", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
+      srcset: coverPhoto,
       media: "(min-width: 480px)"
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: coverIMG.thumb,
-      alt: coverIMG.alt
+      src: coverPhotoThumb,
+      alt: coverPhotoAlt
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cover__txt"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
@@ -393,23 +395,13 @@ const d_protocol = window.location.protocol;
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
       value: headingBox
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "cover__txt__calltoactions"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-      href: "https://wa.me/message/FVIV67T74WYXJ1",
-      target: "_blank",
-      class: "btn-secondary"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-      class: "svg-icon"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("use", {
-      href: d_protocol + '//' + d_hostname + '/wp-content/themes/jenner-ui/assets/icons/symbols.svg#whatsapp'
-    })), "\xA1conversemos!")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cover__txt__blockquote"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("blockquote", {
       className: "jenners-philosophy"
     }, jennerPhoto && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: jennerPhoto.thumb,
-      alt: jennerPhoto.alt,
-      className: "jenners-philosophy__img"
+      src: jennerPhoto,
+      className: "jenners-philosophy__img",
+      alt: jennerPhotoAlt
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
       className: "jenners-philosophy__cite"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {

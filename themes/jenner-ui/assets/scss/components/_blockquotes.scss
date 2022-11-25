@@ -9,6 +9,7 @@
 	grid-template-columns: 6rem 1fr;
 	grid-template-rows: repeat(2, 1fr);
 	&__img {
+		grid-column: 1 / 2;
 		border-radius: 100%;
 		width: 6rem;
 		height: 6rem;
@@ -16,6 +17,7 @@
 	&__cite {
 		margin: 0;
 		@include Caption-Medium12;
+		grid-column: 2 / 3;
 	}
 	&__btn {
 		grid-column: 2 / 3;

@@ -25,7 +25,7 @@
 			grid-row: 1 / 2;
 		}
 		&::after {
-			z-index: 0;
+			z-index: -1;
 			content: '';
 			position: absolute;
 			right: -10rem;
@@ -43,7 +43,8 @@
 				opacity: 0.85;
 			}
 		}
-		img {
+		img,
+		button {
 			margin: auto;
 			position: relative;
 			z-index: 1;

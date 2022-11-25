@@ -1,13 +1,10 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { RichText, MediaUpload } from '@wordpress/block-editor';
-import { Button, ExternalLink } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 //Logo para el bloque
 import { ReactComponent as Logo } from '../jenner-icon.svg';
-
-const d_hostname = window.location.hostname;
-const d_protocol = window.location.protocol;
 
 registerBlockType('jenner/cover', {
 	title: 'Cover',
@@ -25,11 +22,36 @@ registerBlockType('jenner/cover', {
 			selector:
 				'.cover .cover__txt .cover__txt__blockquote .jenners-philosophy__cite',
 		},
-		coverIMG: {
-			type: 'array',
+		coverPhoto: {
+			type: 'string',
+			selector: '.cover .cover__image picture',
+		},
+		coverPhotoThumb: {
+			type: 'string',
+			selector: '.cover .cover__image picture',
+		},
+		coverPhotoID: {
+			type: 'string',
+			selector: '.cover .cover__image picture',
+		},
+		coverPhotoAlt: {
+			type: 'string',
+			selector: '.cover .cover__image picture',
 		},
 		jennerPhoto: {
-			type: 'array',
+			type: 'string',
+			selector:
+				'.cover .cover__txt .cover__txt__blockquote .jenners-philosophy__img',
+		},
+		jennerPhotoID: {
+			type: 'string',
+			selector:
+				'.cover .cover__txt .cover__txt__blockquote .jenners-philosophy__img',
+		},
+		jennerPhotoAlt: {
+			type: 'string',
+			selector:
+				'.cover .cover__txt .cover__txt__blockquote .jenners-philosophy__img',
 		},
 	},
 	edit: (props) => {
@@ -37,8 +59,13 @@ registerBlockType('jenner/cover', {
 			attributes: {
 				headingBox,
 				citeBox,
-				coverIMG = [],
-				jennerPhoto = [],
+				coverPhoto,
+				coverPhotoThumb,
+				coverPhotoID,
+				coverPhotoAlt,
+				jennerPhoto,
+				jennerPhotoID,
+				jennerPhotoAlt,
 			},
 			setAttributes,
 		} = props;
@@ -52,24 +79,19 @@ registerBlockType('jenner/cover', {
 		};
 
 		const onSelectCoverIMG = (newImage) => {
-			const image = {
-				thumb: newImage.sizes.medium.url,
-				large: newImage.sizes.large.url,
-				id: newImage.id,
-				alt: newImage.alt,
-			};
-			console.log(image);
-			setAttributes({ coverIMG: image });
+			setAttributes({
+				coverPhoto: newImage.sizes.large.url,
+				coverPhotoThumb: newImage.sizes.medium.url,
+				coverPhotoID: newImage.id,
+				coverPhotoAlt: newImage.alt,
+			});
 		};
-
 		const onSelectJennerPhoto = (newImage) => {
-			const image = {
-				thumb: newImage.sizes.medium.url,
-				id: newImage.id,
-				alt: newImage.alt,
-			};
-			console.log(image);
-			setAttributes({ jennerPhoto: image });
+			setAttributes({
+				jennerPhoto: newImage.sizes.thumbnail.url,
+				jennerPhotoID: newImage.id,
+				jennerPhotoAlt: newImage.alt,
+			});
 		};
 
 		return (
@@ -78,27 +100,18 @@ registerBlockType('jenner/cover', {
 					<MediaUpload
 						onSelect={onSelectCoverIMG}
 						allowedTypes="image"
-						value={coverIMG.id}
+						value={coverPhotoID}
 						render={({ open }) => (
 							<Button
 								className={
-									coverIMG.id ? 'image-button' : 'button button-large'
+									coverPhoto ? 'image-button' : 'button button-large'
 								}
 								onClick={open}
 							>
-								{!coverIMG.id ? (
-									__('Upload Image', 'jennerui')
+								{!coverPhoto ? (
+									__('Imagen Cover', 'jennerui')
 								) : (
-									<picture>
-										<source
-											srcset={coverIMG.large}
-											media="(min-width: 480px)"
-										/>
-										<img
-											src={coverIMG.thumb}
-											alt={coverIMG.alt}
-										></img>
-									</picture>
+									<img src={coverPhotoThumb} alt={coverPhotoAlt} />
 								)}
 							</Button>
 						)}
@@ -112,72 +125,41 @@ registerBlockType('jenner/cover', {
 							value={headingBox}
 						/>
 					</h1>
-					<div class="cover__txt__calltoactions">
-						<a href="#" class="btn-primary">
-							<svg class="svg-icon">
-								<use
-									href={
-										d_protocol +
-										'//' +
-										d_hostname +
-										'/wp-content/themes/jenner-ui/assets/icons/symbols.svg#newspaper'
-									}
-								/>
-							</svg>
-							Leer nuestro Blog
-						</a>
-						<a
-							href="https://wa.me/message/FVIV67T74WYXJ1"
-							target="_blank"
-							class="btn-secondary"
-						>
-							<svg class="svg-icon">
-								<use
-									href={
-										d_protocol +
-										'//' +
-										d_hostname +
-										'/wp-content/themes/jenner-ui/assets/icons/symbols.svg#whatsapp'
-									}
-								/>
-							</svg>
-							¡conversemos!
-						</a>
-					</div>
 					<div className="cover__txt__blockquote">
-						<MediaUpload
-							onSelect={onSelectJennerPhoto}
-							allowedTypes="image"
-							value={jennerPhoto.id}
-							render={({ open }) => (
-								<Button
-									className={
-										jennerPhoto.id
-											? 'image-button'
-											: 'button button-large'
-									}
-									onClick={open}
-								>
-									{!jennerPhoto.id ? (
-										__('Upload Image', 'jennerui')
-									) : (
-										<img
-											src={jennerPhoto.thumb}
-											alt={jennerPhoto.alt}
-											className="jenners-philosophy__img"
-										/>
-									)}
-								</Button>
-							)}
-						/>
-
-						<p className="jenners-philosophy__cite">
-							<RichText
-								placeholder="Agregar Cita"
-								onChange={onChangesCiteBox}
-								value={citeBox}
+						<blockquote className="jenners-philosophy">
+							<MediaUpload
+								onSelect={onSelectJennerPhoto}
+								allowedTypes="image"
+								value={jennerPhotoID}
+								render={({ open }) => (
+									<Button
+										className={
+											jennerPhoto
+												? 'image-button'
+												: 'button button-large'
+										}
+										onClick={open}
+									>
+										{!jennerPhoto ? (
+											__('Foto', 'jennerui')
+										) : (
+											<img
+												src={jennerPhoto}
+												className="jenners-philosophy__img"
+												alt={jennerPhotoAlt}
+											/>
+										)}
+									</Button>
+								)}
 							/>
-						</p>
+							<p className="jenners-philosophy__cite">
+								<RichText
+									placeholder="Agregar Cita"
+									onChange={onChangesCiteBox}
+									value={citeBox}
+								/>
+							</p>
+						</blockquote>
 					</div>
 				</div>
 			</section>
@@ -185,18 +167,26 @@ registerBlockType('jenner/cover', {
 	},
 	save: (props) => {
 		const {
-			attributes: { headingBox, citeBox, coverIMG, jennerPhoto },
+			attributes: {
+				headingBox,
+				citeBox,
+				coverPhoto,
+				coverPhotoThumb,
+				coverPhotoAlt,
+				jennerPhoto,
+				jennerPhotoAlt,
+			},
 		} = props;
 		return (
 			<section className="cover">
 				<div className="cover__image">
-					{coverIMG && (
+					{coverPhoto && (
 						<picture>
 							<source
-								srcset={coverIMG.large}
+								srcset={coverPhoto}
 								media="(min-width: 480px)"
 							/>
-							<img src={coverIMG.thumb} alt={coverIMG.alt}></img>
+							<img src={coverPhotoThumb} alt={coverPhotoAlt} />
 						</picture>
 					)}
 				</div>
@@ -204,32 +194,14 @@ registerBlockType('jenner/cover', {
 					<h1 className="cover__txt__title">
 						<RichText.Content value={headingBox} />
 					</h1>
-					<div class="cover__txt__calltoactions">
-						<a
-							href="https://wa.me/message/FVIV67T74WYXJ1"
-							target="_blank"
-							class="btn-secondary"
-						>
-							<svg class="svg-icon">
-								<use
-									href={
-										d_protocol +
-										'//' +
-										d_hostname +
-										'/wp-content/themes/jenner-ui/assets/icons/symbols.svg#whatsapp'
-									}
-								/>
-							</svg>
-							¡conversemos!
-						</a>
-					</div>
+
 					<div className="cover__txt__blockquote">
 						<blockquote className="jenners-philosophy">
 							{jennerPhoto && (
 								<img
-									src={jennerPhoto.thumb}
-									alt={jennerPhoto.alt}
+									src={jennerPhoto}
 									className="jenners-philosophy__img"
+									alt={jennerPhotoAlt}
 								/>
 							)}
 							<p className="jenners-philosophy__cite">
