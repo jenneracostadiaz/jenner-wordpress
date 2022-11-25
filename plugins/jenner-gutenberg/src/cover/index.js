@@ -1,5 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, MediaUpload } from '@wordpress/block-editor';
+import { Button } from '@wordpress/components';
+import { __, setLocaleData } from '@wordpress/i18n';
 
 //Logo para el bloque
 import { ReactComponent as Logo } from '../jenner-icon.svg';
@@ -20,10 +22,21 @@ registerBlockType('jenner/cover', {
 			selector:
 				'.cover .cover__txt .cover__txt__blockquote .jenners-philosophy__cite',
 		},
+		coverIMG: {
+			type: 'array',
+		},
+		jennerPhoto: {
+			type: 'array',
+		},
 	},
 	edit: (props) => {
 		const {
-			attributes: { headingBox, citeBox },
+			attributes: {
+				headingBox,
+				citeBox,
+				coverIMG = [],
+				jennerPhoto = [],
+			},
 			setAttributes,
 		} = props;
 
@@ -35,9 +48,59 @@ registerBlockType('jenner/cover', {
 			setAttributes({ citeBox: newCite });
 		};
 
+		const onSelectCoverIMG = (newImage) => {
+			const image = {
+				thumb: newImage.sizes.medium.url,
+				large: newImage.sizes.large.url,
+				id: newImage.id,
+				alt: newImage.alt,
+			};
+			console.log(image);
+			setAttributes({ coverIMG: image });
+		};
+
+		const onSelectJennerPhoto = (newImage) => {
+			const image = {
+				thumb: newImage.sizes.medium.url,
+				id: newImage.id,
+				alt: newImage.alt,
+			};
+			console.log(image);
+			setAttributes({ jennerPhoto: image });
+		};
+
 		return (
 			<section className="cover">
-				<div className="cover__image"></div>
+				<div className="cover__image">
+					<MediaUpload
+						onSelect={onSelectCoverIMG}
+						allowedTypes="image"
+						value={coverIMG.id}
+						render={({ open }) => (
+							<Button
+								className={
+									coverIMG.id ? 'image-button' : 'button button-large'
+								}
+								onClick={open}
+							>
+								{!coverIMG.id ? (
+									__('Upload Image', 'jennerui')
+								) : (
+									<picture>
+										<source
+											srcset={coverIMG.large}
+											media="(min-width: 480px)"
+										/>
+										<img
+											src={coverIMG.thumb}
+											alt={coverIMG.alt}
+										></img>
+									</picture>
+								)}
+							</Button>
+						)}
+					/>
+				</div>
 				<div className="cover__txt">
 					<h1 className="cover__txt__title">
 						<RichText
@@ -47,6 +110,32 @@ registerBlockType('jenner/cover', {
 						/>
 					</h1>
 					<div className="cover__txt__blockquote">
+						<MediaUpload
+							onSelect={onSelectJennerPhoto}
+							allowedTypes="image"
+							value={jennerPhoto.id}
+							render={({ open }) => (
+								<Button
+									className={
+										jennerPhoto.id
+											? 'image-button'
+											: 'button button-large'
+									}
+									onClick={open}
+								>
+									{!jennerPhoto.id ? (
+										__('Upload Image', 'jennerui')
+									) : (
+										<img
+											src={jennerPhoto.thumb}
+											alt={jennerPhoto.alt}
+											className="jenners-philosophy__img"
+										/>
+									)}
+								</Button>
+							)}
+						/>
+
 						<p className="jenners-philosophy__cite">
 							<RichText
 								placeholder="Agregar Cita"
@@ -61,19 +150,38 @@ registerBlockType('jenner/cover', {
 	},
 	save: (props) => {
 		const {
-			attributes: { headingBox, citeBox },
+			attributes: { headingBox, citeBox, coverIMG, jennerPhoto },
 		} = props;
 		return (
 			<section className="cover">
-				<div className="cover__image"></div>
+				<div className="cover__image">
+					{coverIMG && (
+						<picture>
+							<source
+								srcset={coverIMG.large}
+								media="(min-width: 480px)"
+							/>
+							<img src={coverIMG.thumb} alt={coverIMG.alt}></img>
+						</picture>
+					)}
+				</div>
 				<div className="cover__txt">
 					<h1 className="cover__txt__title">
 						<RichText.Content value={headingBox} />
 					</h1>
 					<div className="cover__txt__blockquote">
-						<p className="jenners-philosophy__cite">
-							<RichText.Content value={citeBox} />
-						</p>
+						<blockquote className="jenners-philosophy">
+							{jennerPhoto && (
+								<img
+									src={jennerPhoto.thumb}
+									alt={jennerPhoto.alt}
+									className="jenners-philosophy__img"
+								/>
+							)}
+							<p className="jenners-philosophy__cite">
+								<RichText.Content value={citeBox} />
+							</p>
+						</blockquote>
 					</div>
 				</div>
 			</section>
