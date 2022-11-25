@@ -1,9 +1,19 @@
 @import '../components/darkmode';
+@import '../vars/displays';
+@import '../components/mediaqueries';
 
 html {
 	box-sizing: border-box;
 	font-size: 62.5%; /* Now 10px = 1rem! */
+}
+
+html,
+body {
 	overflow-x: hidden;
+	min-height: 100vh;
+	// @include laptop() {
+	// 	overflow-x: unset;
+	// }
 }
 
 *,
