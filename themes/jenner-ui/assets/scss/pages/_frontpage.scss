@@ -30,6 +30,21 @@
 	}
 }
 
+@mixin display-icons($idIcoOne, $idIcoTwo) {
+	.wp-image-#{$idIcoOne} {
+		display: block;
+		@include darkmode() {
+			display: none;
+		}
+	}
+	.wp-image-#{$idIcoTwo} {
+		display: none;
+		@include darkmode() {
+			display: block;
+		}
+	}
+}
+
 .home-page {
 	padding: 4rem 0;
 }
@@ -107,18 +122,7 @@
 				}
 			}
 			.btn-secondary {
-				.wp-image-200 {
-					display: block;
-					@include darkmode() {
-						display: none;
-					}
-				}
-				.wp-image-206 {
-					display: none;
-					@include darkmode() {
-						display: block;
-					}
-				}
+				@include display-icons(200, 206);
 			}
 		}
 	}
@@ -128,8 +132,12 @@
 .value-proposal {
 	margin: 4rem auto;
 	&__list {
+		padding: 4rem 0;
 		display: grid;
 		grid-gap: 4rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
 		@include tablet() {
 			grid-template-columns: repeat(3, 1fr);
 		}
@@ -138,7 +146,8 @@
 			p {
 				margin: 0;
 			}
-			h3 {
+			h3,
+			.rich-text {
 				display: flex;
 				align-items: center;
 				svg,
@@ -149,6 +158,9 @@
 						fill: $cWhite;
 					}
 				}
+				@include display-icons(235, 236);
+				@include display-icons(240, 241);
+				@include display-icons(249, 250);
 			}
 		}
 	}
