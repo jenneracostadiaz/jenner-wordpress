@@ -42,6 +42,15 @@ if ( ! function_exists( 'jennerui_setup' ) ) :
 			'primary'   => __( 'Primary Menu', 'jennerui' ),
 		) );
 
+        
+       /**
+         * Custon Image Size
+        */
+        add_image_size( 'projects_thumb', 165, 165 );
+        add_image_size( 'projects_thumb_vertical', 165, 350 );
+        add_image_size( 'projects_medium', 445, 222 );
+        add_image_size( 'projects_medium_vertical', 290, 464 );
+        add_image_size( 'projects_medium_horizontal', 605, 222 );
         /** CSS */
         wp_enqueue_style('mainCSS', get_template_directory_uri() . '/assets/css/main.min.css', array(), wp_get_theme()->get('Version'));
         wp_enqueue_style('style', get_stylesheet_uri(), array('mainCSS'), wp_get_theme()->get('Version') );
