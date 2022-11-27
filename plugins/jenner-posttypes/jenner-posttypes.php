@@ -93,3 +93,56 @@ function cptui_register_my_taxes_categoria_proyectos() {
 	register_taxonomy( "categoria_proyectos", [ "proyectos" ], $args );
 }
 add_action( 'init', 'cptui_register_my_taxes_categoria_proyectos' );
+
+function rest_proyectos( $data ) {
+    $parsed_args=[
+        'numberposts'      => -1,
+        'orderby'          => 'date',
+        'order'            => 'DESC',
+        'post_type'        => 'proyectos',
+    ];
+
+    $get_posts = new WP_Query;
+    $posts = $get_posts->query( $parsed_args );
+    if (empty($posts)) {
+        return new WP_Error( 'empty_terms', 'There are no posts to display', array('status' => 404) );
+    }
+
+    $response = new WP_REST_Response($posts);
+    $response->set_status(200);
+
+    $new_array = (object) array('Proyectos' => [], 'Usuarios' => [], 'Categorias' => []);
+    $i = 0;
+
+    foreach($posts as $post) {
+        $new_array->Proyectos[$i]['id'] = $post->ID;
+        $new_array->Proyectos[$i]['title'] = $post->post_title;
+        $new_array->Proyectos[$i]['date'] = $post->post_date;
+        $i++;
+    }
+
+    $usuarios = get_users();
+    $a = 0;
+    foreach ($usuarios as $usuario) {
+        $new_array->Usuarios[$a]['id'] = $usuario->id;
+        $new_array->Usuarios[$a]['userName'] = $usuario->display_name;
+        $a++;
+    }
+
+	$tax_terms = get_terms('categoria_proyectos');
+    $t = 0;
+    foreach ($tax_terms as $tax_term) {
+        $new_array->Categorias[$t]['id'] = $tax_term->term_id;
+        $new_array->Categorias[$t]['name'] = $tax_term->name;
+        $t++;
+    }
+
+    return $new_array;
+}
+   
+add_action( 'rest_api_init', function () {
+    register_rest_route( 'proyectos/filtros/v1', '/get', array(
+      'methods' => 'GET',
+      'callback' => 'rest_proyectos',
+    ) );
+} );
