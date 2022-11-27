@@ -126,6 +126,7 @@ function rest_proyectos( $data ) {
     foreach ($usuarios as $usuario) {
         $new_array->Usuarios[$a]['id'] = $usuario->id;
         $new_array->Usuarios[$a]['userName'] = $usuario->display_name;
+        $new_array->Usuarios[$a]['userRegistered'] = $usuario->user_registered;
         $a++;
     }
 
