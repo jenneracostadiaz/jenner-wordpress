@@ -51,5 +51,17 @@ function jenner_registrar_bloques(){
             'editor_script' => 'jenner-editor-script',
         ) );
     }
+
+    /** Registrar un bloque dinamico */
+    register_block_type( 'jenner/proyectos', array(
+        'editor_script' => 'jenner-editor-script',
+        'render_callback' => 'jenner_proyectos_front_end'
+    ) );
 }
 add_action( 'init', 'jenner_registrar_bloques' );
+
+/** Consulta la base de datos para mosstrar los resultados */
+
+function jenner_proyectos_front_end() {
+    return 'en el front end';
+}
