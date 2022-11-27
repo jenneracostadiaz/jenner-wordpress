@@ -55,8 +55,6 @@ function cptui_register_my_cpts() {
 
 add_action( 'init', 'cptui_register_my_cpts' );
 
-
-
 function cptui_register_my_taxes_categoria_proyectos() {
 
 	/**
@@ -94,6 +92,49 @@ function cptui_register_my_taxes_categoria_proyectos() {
 }
 add_action( 'init', 'cptui_register_my_taxes_categoria_proyectos' );
 
+/** Agregamos campos a la respuesta de la Rest API */
+function jennerui_agregar_campos_rest_api(){
+	register_rest_field( 
+		'proyectos',
+		'link_external',
+		array(
+			'get_callback' => 'jennerui_obtener_link_external',
+			'update_callback' => null,
+			'schema' => null
+		)
+	);
+	register_rest_field( 
+		'proyectos',
+		'imagen_destacada',
+		array(
+			'get_callback' => 'jennerui_obtener_imagen_destacada',
+			'update_callback' => null,
+			'schema' => null
+		)
+	);
+
+}
+add_action('rest_api_init', 'jennerui_agregar_campos_rest_api');
+
+function jennerui_obtener_link_external() {
+	if(!function_exists('get_field')){
+		return;
+	}
+	if(get_field('link')){
+		return get_field('link');
+	}
+	return false;
+}
+
+function jennerui_obtener_imagen_destacada($object, $field_name, $request) {
+	if($object['featured_media']) {
+		$imagen = wp_get_attachment_image_src($object['featured_media'], 'medium');
+		return $imagen[0];
+	}
+	return false;
+}
+
+/** Custom Endpoint */
 function rest_proyectos( $data ) {
     $parsed_args=[
         'numberposts'      => -1,
