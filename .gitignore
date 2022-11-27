@@ -4,3 +4,5 @@
 **/node_modules
 /ai1wm-backups
 **/all-in-one-wp-migration
+**/advanced-custom-fields
+**/custom-post-type-ui
