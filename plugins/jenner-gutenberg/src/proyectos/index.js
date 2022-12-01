@@ -172,7 +172,7 @@ registerBlockType('jenner/proyectos', {
 											<img
 												src={proy.imagen_destacada}
 												alt={proy.title.rendered}
-											></img>
+											/>
 										</>
 									</section>
 								</article>
