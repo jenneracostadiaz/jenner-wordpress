@@ -63,6 +63,50 @@
 	}
 }
 
+@mixin btn-third($color) {
+	@include btn-base();
+	position: relative;
+	background-color: transparent;
+	color: $color;
+	border-radius: unset;
+	box-shadow: unset;
+	svg,
+	img {
+		fill: $color;
+		margin-right: 1rem;
+		margin-left: -2rem;
+	}
+	&::after {
+		content: '';
+		position: absolute;
+		left: 50%;
+		bottom: 1rem;
+		width: 0;
+		height: 1px;
+		background-color: $color;
+		transition: all 0.5s;
+	}
+	&:hover {
+		@if ($color == $cPrimary) {
+			color: $cPrimary_hover;
+		}
+		&::after {
+			left: calc(50% - 1.5rem);
+			width: 3rem;
+		}
+	}
+	&:focus {
+		@if ($color == $cPrimary) {
+			color: $cPrimary_focus;
+		}
+		&::after {
+			left: 0;
+			right: 0;
+			width: 100%;
+		}
+	}
+}
+
 .btn-primary {
 	@include btn-primary($cPrimary, $cWhite);
 }
@@ -71,5 +115,11 @@
 	@include btn-secondary($cPrimary, $cBackgroun03);
 	@include darkmode() {
 		@include btn-secondary($cPrimary, $cWhite);
+	}
+}
+.btn-third {
+	@include btn-third($cPrimary);
+	@include darkmode() {
+		@include btn-third($cWhite);
 	}
 }

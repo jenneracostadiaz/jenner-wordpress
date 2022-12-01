@@ -1,0 +1,72 @@
+$radius_card: 1.2rem;
+.card {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	&__header {
+		opacity: 0;
+		position: absolute;
+		inset: 0;
+		border-radius: $radius_card;
+		background-color: rgba($cBackgroun03, 0.8);
+		color: $cWhite;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+		transition: all 0.5s;
+		@include laptop() {
+			align-items: flex-start;
+			justify-content: flex-end;
+		}
+		&__category {
+			@include Caption-Medium11;
+		}
+		&__title {
+			@include H5-SemiBold24;
+			margin: 0;
+		}
+		&__time {
+			@include Caption-Medium11;
+		}
+		.button-group {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin-top: 1rem;
+			@include laptop() {
+				justify-content: flex-start;
+			}
+			a {
+				@include Body-Medium14;
+				margin: auto;
+				@include laptop() {
+					margin-right: 1rem;
+					margin-left: 0;
+				}
+			}
+		}
+	}
+	&__image {
+		img {
+			border-radius: $radius_card;
+			transition: all 0.5s;
+		}
+	}
+	&.onhover {
+		.card__header {
+			opacity: 1;
+		}
+	}
+	&:hover {
+		.card__header {
+			opacity: 1;
+		}
+		.card__image {
+			img {
+				box-shadow: $ePopup;
+			}
+		}
+	}
+}
