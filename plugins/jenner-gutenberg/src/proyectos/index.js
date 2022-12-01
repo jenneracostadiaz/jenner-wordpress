@@ -36,7 +36,7 @@ registerBlockType('jenner/proyectos', {
 				'postType',
 				'proyectos',
 				{
-					per_page: cantidadMostrar,
+					per_page: cantidadMostrar || 4,
 				}
 			),
 			onChangeCantidadMostrar,
@@ -115,7 +115,7 @@ registerBlockType('jenner/proyectos', {
 									onChange={onChangeCantidadMostrar}
 									min={1}
 									max={10}
-									value={cantidadMostrar}
+									value={cantidadMostrar || 4}
 								/>
 							</div>
 						</div>

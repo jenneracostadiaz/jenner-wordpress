@@ -62,11 +62,14 @@ add_action( 'init', 'jenner_registrar_bloques' );
 
 /** Consulta la base de datos para mosstrar los resultados */
 
-function jenner_proyectos_front_end() {
+function jenner_proyectos_front_end($atts) {
+    // echo "<pre>";
+    // var_dump($atts);
+    // echo "</pre>";
     $proyectos = wp_get_recent_posts(array(
         'post_type' => 'proyectos',
         'post_status' => 'publish',
-        'numberposts' => 10
+        'numberposts' => $atts['cantidadMostrar']
     ));
 
     if(count($proyectos) == 0 ){

@@ -533,7 +533,7 @@ __webpack_require__.r(__webpack_exports__);
       // Enviar petición a la api
       categorias: select('core').getEntityRecords('taxonomy', 'categoria_proyectos'),
       proyectos: select('core').getEntityRecords('postType', 'proyectos', {
-        per_page: cantidadMostrar
+        per_page: cantidadMostrar || 4
       }),
       onChangeCantidadMostrar,
       props
@@ -613,7 +613,7 @@ __webpack_require__.r(__webpack_exports__);
       onChange: onChangeCantidadMostrar,
       min: 1,
       max: 10,
-      value: cantidadMostrar
+      value: cantidadMostrar || 4
     }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
       className: "projects"
     }, proyectos && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, proyectos.map(proy => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("article", {
