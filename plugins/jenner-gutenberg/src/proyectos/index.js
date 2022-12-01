@@ -147,6 +147,7 @@ registerBlockType('jenner/proyectos', {
 												<a
 													href={proy.link_external}
 													className="btn-primary"
+													target="_blank"
 												>
 													<svg
 														width="12"
@@ -160,7 +161,11 @@ registerBlockType('jenner/proyectos', {
 												</a>
 											)}
 											{proy.acf.mostrar_protafolio && (
-												<a href={proy.link} className="btn-third">
+												<a
+													href={proy.link}
+													className="btn-third"
+													target="_blank"
+												>
 													<svg
 														width="16"
 														height="16"
