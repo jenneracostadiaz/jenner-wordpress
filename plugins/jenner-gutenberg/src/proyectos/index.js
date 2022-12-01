@@ -1,7 +1,11 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { withSelect } from '@wordpress/data';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, RangeControl } from '@wordpress/components';
+import {
+	PanelBody,
+	RangeControl,
+	SelectControl,
+} from '@wordpress/components';
 
 //Logo para el bloque
 import { ReactComponent as Logo } from '../jenner-icon.svg';
@@ -42,8 +46,8 @@ registerBlockType('jenner/proyectos', {
 			onChangeCantidadMostrar,
 			props,
 		};
-	})(({ proyectos, onChangeCantidadMostrar, props }) => {
-		console.log(proyectos);
+	})(({ categorias, proyectos, onChangeCantidadMostrar, props }) => {
+		console.log(categorias);
 
 		const {
 			attributes: { cantidadMostrar },
@@ -56,6 +60,19 @@ registerBlockType('jenner/proyectos', {
 		if (proyectos && proyectos.length === 0) {
 			return 'No hay resultados';
 		}
+
+		if (!categorias) {
+			console.log('No hay categorias');
+		}
+
+		if (categorias && categorias.length === 0) {
+			console.log('No hay resultados');
+		}
+
+		categorias.forEach((categoria) => {
+			categoria['label'] = categoria.name;
+			categoria['value'] = categoria.id;
+		});
 
 		const formatDate = (date) => {
 			let newdate = new Date(date);
@@ -117,6 +134,21 @@ registerBlockType('jenner/proyectos', {
 									max={10}
 									value={cantidadMostrar || 4}
 								/>
+							</div>
+						</div>
+					</PanelBody>
+				</InspectorControls>
+				<InspectorControls>
+					<PanelBody
+						title={'Categoría de Proyecto'}
+						initialOpen={false}
+					>
+						<div className="components-base-control">
+							<div className="components-base-control__field">
+								<label className="components-base-control__label">
+									Categoría de Proyecto
+								</label>
+								<SelectControl options={categorias} />
 							</div>
 						</div>
 					</PanelBody>

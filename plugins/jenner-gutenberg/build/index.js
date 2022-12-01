@@ -540,11 +540,12 @@ __webpack_require__.r(__webpack_exports__);
     };
   })(_ref => {
     let {
+      categorias,
       proyectos,
       onChangeCantidadMostrar,
       props
     } = _ref;
-    console.log(proyectos);
+    console.log(categorias);
     const {
       attributes: {
         cantidadMostrar
@@ -556,6 +557,16 @@ __webpack_require__.r(__webpack_exports__);
     if (proyectos && proyectos.length === 0) {
       return 'No hay resultados';
     }
+    if (!categorias) {
+      console.log('No hay categorias');
+    }
+    if (categorias && categorias.length === 0) {
+      console.log('No hay resultados');
+    }
+    categorias.forEach(categoria => {
+      categoria['label'] = categoria.name;
+      categoria['value'] = categoria.id;
+    });
     const formatDate = date => {
       let newdate = new Date(date);
       let year = newdate.getFullYear();
@@ -614,6 +625,17 @@ __webpack_require__.r(__webpack_exports__);
       min: 1,
       max: 10,
       value: cantidadMostrar || 4
+    }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+      title: 'Categoría de Proyecto',
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "components-base-control"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "components-base-control__field"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+      className: "components-base-control__label"
+    }, "Categor\xEDa de Proyecto"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
+      options: categorias
     }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
       className: "projects"
     }, proyectos && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, proyectos.map(proy => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("article", {
