@@ -550,6 +550,12 @@ __webpack_require__.r(__webpack_exports__);
         cantidadMostrar
       }
     } = props;
+    if (!proyectos) {
+      return 'Cargando...';
+    }
+    if (proyectos && proyectos.length === 0) {
+      return 'No hay resultados';
+    }
     const formatDate = date => {
       let newdate = new Date(date);
       let year = newdate.getFullYear();
